@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loan Calculator</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        section { margin-bottom: 20px; }
+        input, button { margin-right: 10px; }
+    </style>
+</head>
+<body>
+    <h1>Loan Calculator</h1>
+    <section id="homeLoan">
+        <h2>Home Loan</h2>
+        <input type="number" id="homeLoanAmount" placeholder="Loan Amount">
+        <input type="number" id="homeLoanTenure" placeholder="Tenure in Years">
+        <button onclick="calculateLoan('home')">Calculate</button>
+        <div id="homeLoanResult"></div>
+    </section>
+    <section id="personalLoan">
+        <h2>Personal Loan</h2>
+        <input type="number" id="personalLoanAmount" placeholder="Loan Amount">
+        <input type="number" id="personalLoanTenure" placeholder="Tenure in Years">
+        <button onclick="calculateLoan('personal')">Calculate</button>
+        <div id="personalLoanResult"></div>
+    </section>
+    <section id="carLoan">
+        <h2>Car Loan</h2>
+        <input type="number" id="carLoanAmount" placeholder="Loan Amount">
+        <input type="number" id="carLoanTenure" placeholder="Tenure in Years">
+        <button onclick="calculateLoan('car')">Calculate</button>
+        <div id="carLoanResult"></div>
+    </section>
+    <section id="goldLoan">
+        <h2>Gold Loan</h2>
+        <input type="number" id="goldLoanAmount" placeholder="Loan Amount">
+        <input type="number" id="goldLoanTenure" placeholder="Tenure in Years">
+        <button onclick="calculateLoan('gold')">Calculate</button>
+        <div id="goldLoanResult"></div>
+    </section>
+    <p><small>Note: These rates are for estimation only and do not reflect real-time or specific bank offers.</small></p>
+
+    <script src="script.js"></script>
+</body>
+</html>
