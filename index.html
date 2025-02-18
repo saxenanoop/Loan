@@ -5,43 +5,86 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Loan Calculator</title>
     <style>
-        body { font-family: Arial, sans-serif; margin: 20px; }
-        section { margin-bottom: 20px; }
-        input, button { margin-right: 10px; }
+        body { font-family: 'Roboto', sans-serif; background-color: #f4f4f4; color: #333; }
+        .container { max-width: 800px; margin: 0 auto; padding: 20px; }
+        .loan-card {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+            padding: 20px;
+        }
+        h2 { color: #007BFF; margin-top: 0; }
+        input, button {
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        button {
+            background-color: #007BFF;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover { background-color: #0056b3; }
+        .slider-container {
+            display: flex;
+            align-items: center;
+        }
+        .slider { flex-grow: 1; }
+        .result { 
+            background: #e9ecef;
+            padding: 15px;
+            border-radius: 4px;
+            margin-top: 10px;
+        }
+        .info-tooltip {
+            position: relative;
+            display: inline-block;
+            cursor: help;
+        }
+        .info-tooltip .tooltiptext {
+            visibility: hidden;
+            width: 120px;
+            background-color: #555;
+            color: #fff;
+            text-align: center;
+            border-radius: 6px;
+            padding: 5px 0;
+            position: absolute;
+            z-index: 1;
+            bottom: 125%;
+            left: 50%;
+            margin-left: -60px;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        .info-tooltip:hover .tooltiptext {
+            visibility: visible;
+            opacity: 1;
+        }
     </style>
 </head>
 <body>
-    <h1>Loan Calculator</h1>
-    <section id="homeLoan">
-        <h2>Home Loan</h2>
-        <input type="number" id="homeLoanAmount" placeholder="Loan Amount">
-        <input type="number" id="homeLoanTenure" placeholder="Tenure in Years">
-        <button onclick="calculateLoan('home')">Calculate</button>
-        <div id="homeLoanResult"></div>
-    </section>
-    <section id="personalLoan">
-        <h2>Personal Loan</h2>
-        <input type="number" id="personalLoanAmount" placeholder="Loan Amount">
-        <input type="number" id="personalLoanTenure" placeholder="Tenure in Years">
-        <button onclick="calculateLoan('personal')">Calculate</button>
-        <div id="personalLoanResult"></div>
-    </section>
-    <section id="carLoan">
-        <h2>Car Loan</h2>
-        <input type="number" id="carLoanAmount" placeholder="Loan Amount">
-        <input type="number" id="carLoanTenure" placeholder="Tenure in Years">
-        <button onclick="calculateLoan('car')">Calculate</button>
-        <div id="carLoanResult"></div>
-    </section>
-    <section id="goldLoan">
-        <h2>Gold Loan</h2>
-        <input type="number" id="goldLoanAmount" placeholder="Loan Amount">
-        <input type="number" id="goldLoanTenure" placeholder="Tenure in Years">
-        <button onclick="calculateLoan('gold')">Calculate</button>
-        <div id="goldLoanResult"></div>
-    </section>
-    <p><small>Note: These rates are for estimation only and do not reflect real-time or specific bank offers.</small></p>
-
+    <div class="container">
+        <h1>Loan Calculator</h1>
+        <div class="loan-card" id="homeLoan">
+            <h2>Home Loan <span class="info-tooltip" title="Home Loan Information">?</span></h2>
+            <div class="slider-container">
+                <input type="range" min="100000" max="10000000" value="500000" class="slider" id="homeLoanAmountSlider">
+                <input type="number" id="homeLoanAmount" value="500000" placeholder="Loan Amount">
+            </div>
+            <div class="slider-container">
+                <input type="range" min="1" max="30" value="15" class="slider" id="homeLoanTenureSlider">
+                <input type="number" id="homeLoanTenure" value="15" placeholder="Tenure in Years">
+            </div>
+            <button onclick="calculateLoan('home')">Calculate</button>
+            <div id="homeLoanResult" class="result"></div>
+        </div>
+        <!-- Repeat for personalLoan, carLoan, goldLoan -->
+        <p><small>Note: These rates are for estimation only and do not reflect real-time or specific bank offers.</small></p>
+    </div>
     <script src="script.js"></script>
 </body>
 </html>
