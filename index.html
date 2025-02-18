@@ -8,15 +8,15 @@
         body { font-family: 'Arial', sans-serif; background-color: #f4f4f4; margin: 0; padding: 0; }
         .container { max-width: 1000px; margin: 20px auto; padding: 20px; background: white; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
         .header { background-color: #003366; color: white; padding: 15px 0; text-align: center; }
-        .nav { background-color: #004785; padding: 10px 0; }
+        .nav { background-color: #004785; padding: 10px 0; display: flex; justify-content: center; }
         .nav a { color: white; margin: 0 15px; text-decoration: none; }
-        .loan-type { display: flex; justify-content: center; margin-bottom: 20px; }
-        .loan-type button { padding: 10px 20px; margin: 0 5px; border: none; background: #e0e0e0; cursor: pointer; }
+        .loan-type { display: flex; justify-content: center; flex-wrap: wrap; margin-bottom: 20px; }
+        .loan-type button { padding: 10px 20px; margin: 5px; border: none; background: #e0e0e0; cursor: pointer; }
         .loan-type button.active { background: #004785; color: white; }
         .calculator { border: 1px solid #ddd; padding: 20px; border-radius: 8px; }
         .input-group { margin-bottom: 20px; }
         .input-group label { display: block; margin-bottom: 5px; }
-        .input-group input[type="number"] { width: calc(100% - 100px); padding: 10px; border: 1px solid #ddd; border-radius: 4px; }
+        .input-group input[type="number"] { width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px; }
         .input-group .unit { display: inline-block; margin-left: 5px; }
         .range-slider { margin-top: 10px; }
         .range-slider input[type="range"] { width: 100%; }
@@ -25,15 +25,21 @@
         .result-section { margin-top: 30px; }
         .result-section h3 { margin-top: 0; }
         .result { font-size: 1.2em; font-weight: bold; }
-        .breakdown { display: flex; justify-content: space-around; margin-top: 20px; }
-        .breakdown div { text-align: center; }
+        .breakdown { display: flex; justify-content: space-around; flex-wrap: wrap; margin-top: 20px; }
+        .breakdown div { text-align: center; margin: 10px; }
         .pie-chart { width: 150px; height: 150px; margin: 20px auto; }
-        .sidebar { float: right; width: 30%; padding-left: 20px; }
+        .sidebar { width: 100%; padding: 20px; box-sizing: border-box; }
         .sidebar h3 { margin-top: 0; }
         .sidebar ul { list-style: none; padding: 0; }
         .sidebar ul li { margin-bottom: 10px; }
         .sidebar ul li a { color: #007BFF; text-decoration: none; }
         .sidebar ul li a:hover { text-decoration: underline; }
+
+        @media (min-width: 768px) {
+            .sidebar { width: 30%; float: right; }
+            .container { flex-direction: row; }
+            .calculator { flex: 1; margin-right: 20px; }
+        }
     </style>
 </head>
 <body>
@@ -60,7 +66,7 @@
                 <div class="range-slider">
                     <input type="range" min="100000" max="10000000" value="5000000" id="loanAmountSlider">
                 </div>
-                <input type="number" id="loanAmount" value="50,00,000" placeholder="Loan Amount">
+                <input type="number" id="loanAmount" value="5000000" placeholder="Loan Amount">
                 <span class="unit">₹</span>
             </div>
             <div class="input-group">
